@@ -1,1 +1,6 @@
-# practice-1
+
+## Screens
+- [ ] Home
+- [ ] TV
+- [ ] Search
+- [ ] Detail
