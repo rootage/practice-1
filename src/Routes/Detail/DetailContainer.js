@@ -2,10 +2,10 @@ import { movieApi, tvApi } from "api";
 import React from "react";
 import DetailPresenter from "./DetailPresenter";
 
+
 export default class extends React.Component {
     constructor(props) {
         super(props);
-
         const {
             location: { pathname }
         } = props;
@@ -14,9 +14,11 @@ export default class extends React.Component {
             result: null,
             error: null,
             loading: true,
-            isMovie: pathname.includes("/movie/")
+            isMovie: pathname.includes("/movie/"),
+            pathname: pathname
         };
     }
+
     async componentDidMount() {
         const {
             match: {
@@ -24,45 +26,32 @@ export default class extends React.Component {
             },
             history: { push }
         } = this.props;
-        // console.log(typeof parseInt(id));
-
-
 
         const { isMovie } = this.state;
         const parsedId = parseInt(id);
+
         if (isNaN(parsedId)) {
             return push("/");
         }
-
-        console.log("isMovie: " + isMovie);
+        const { pathname } = this.state;
+        console.log("pathname: " + pathname)
+        console.log("isMovie: " + isMovie)
         let result = null;
         try {
             if (isMovie) {
-                console.log("movie")
                 ({ data: result } = await movieApi.movieDetail(parsedId));
             } else {
-                console.log("tv")
                 ({ data: result } = await tvApi.showDetail(parsedId));
             }
-            // console.log(result);
-
-        } catch (error) {
-            this.setState({ error: "Cant't find anything." });
+        } catch {
+            this.setState({ error: "Can't find anything." });
         } finally {
             this.setState({ loading: false, result });
         }
     }
 
     render() {
-        console.log(this.props);
         const { result, error, loading } = this.state;
-        return (
-            <DetailPresenter
-                result={result}
-                error={error}
-                loading={loading}
-            />
-        );
-
+        return <DetailPresenter result={result} error={error} loading={loading} />;
     }
 }

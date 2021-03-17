@@ -28,7 +28,8 @@ const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) => (
                                 title={movie.original_title}
                                 imageUrl={movie.poster_path}
                                 rating={movie.vote_average}
-                                year={movie.release_date && movie.release_date.substring(0, 4)} />
+                                year={movie.release_date && movie.release_date.substring(0, 4)} 
+                                isMovie={true} />
                         ))}
                     </Section>
                 )}
@@ -39,7 +40,8 @@ const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) => (
                                 title={movie.original_title}
                                 imageUrl={movie.poster_path}
                                 rating={movie.vote_average}
-                                year={movie.release_date && movie.release_date.substring(0, 4)} />
+                                year={movie.release_date && movie.release_date.substring(0, 4)} 
+                                isMovie={true} />
                         ))}
                     </Section>
                 )}
@@ -50,7 +52,8 @@ const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) => (
                                 title={movie.original_title}
                                 imageUrl={movie.poster_path}
                                 rating={movie.vote_average}
-                                year={movie.release_date && movie.release_date.substring(0, 4)} />
+                                year={movie.release_date && movie.release_date.substring(0, 4)} 
+                                isMovie={true} />
                         ))}
                     </Section>
                 )}
