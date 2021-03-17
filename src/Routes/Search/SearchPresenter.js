@@ -44,7 +44,8 @@ const SearchPresenter = ({ movieResults, tvResults, searchTerm, error, loading, 
                                 title={movie.original_title}
                                 imageUrl={movie.poster_path}
                                 rating={movie.vote_average}
-                                year={movie.release_date && movie.release_date.substring(0, 4)} />
+                                year={movie.release_date && movie.release_date.substring(0, 4)} 
+                                isMovie={true} />
                         ))}
                     </Section>
                 )}
@@ -55,7 +56,8 @@ const SearchPresenter = ({ movieResults, tvResults, searchTerm, error, loading, 
                                 title={show.original_name}
                                 imageUrl={show.poster_path}
                                 rating={show.vote_average}
-                                year={show.first_air_date && show.first_air_date.substring(0, 4)} />
+                                year={show.first_air_date && show.first_air_date.substring(0, 4)} 
+                                isMovie={false} />
                         ))}
                     </Section>
                 )}
